@@ -7,4 +7,7 @@ externchar **environ
 #include <string.h>
 #include <unistd.h>
 
+int _putchar(char c);
+void user_prompt(void);
+
 #endif
