@@ -6,6 +6,7 @@ externchar **environ
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <signal.h>
 
 int _putchar(char c);
 void user_prompt(void);
