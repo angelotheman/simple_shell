@@ -7,7 +7,9 @@ externchar **environ
 #include <string.h>
 #include <unistd.h>
 #include <signal.h>
+#include <signal.h>
 
+int main(int argc, char **argv, char *envp[]);
 int _putchar(char c);
 void user_prompt(void);
 
