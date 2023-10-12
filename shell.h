@@ -1,16 +1,18 @@
 #ifndef SHELL_H
 #define SHELL_H
 
-externchar **environ
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <sys/wait.h>
 #include <unistd.h>
-#include <signal.h>
-#include <signal.h>
+#include <string.h>
+#include <stdlib.h>
+#include <fcntl.h>
 
-int main(int argc, char **argv, char *envp[]);
-int _putchar(char c);
-void user_prompt(void);
+/* Helper Functions */
+int startsWithFowardSlash(char const *str);
+char *getFilePath(char *file_name);
+void print_env(char **env);
 
-#endif
+#endif /* SHELL_H */
