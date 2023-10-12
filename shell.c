@@ -19,4 +19,12 @@ int main(int argc, char **argv, char *envp[])
 		/* Display the shell prompt */
 		prompt_user();
 	}
+	if (fgets(input, sizeof(input), stdin) == NULL)
+		break;
+
+	size_t len = strlen(input);
+	if (len > 0 && input[len - 1] == '\n')
+		input[len - 1] = '\0';
+
+	return (0);
 }
