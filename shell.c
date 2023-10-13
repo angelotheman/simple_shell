@@ -78,6 +78,5 @@ int main(int argc, char *argv[], char **env)
 		}
 		line_number++;
 	}
-	free(buf);
 	return (0);
 }
