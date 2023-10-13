@@ -12,7 +12,9 @@
 
 /* Helper Functions */
 int startsWithFowardSlash(char const *str);
-char *getFilePath(char *file_name);
+char *get_file_path(char *file_name);
 void print_env(char **env);
+char *find_loc(char *arg);
+char *loc(char *path, char *arg);
 
 #endif /* SHELL_H */

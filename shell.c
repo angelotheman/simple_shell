@@ -12,12 +12,11 @@ int main(int argc, char *argv[], char **env)
 {
 	(void)argc, (void)argv;
 	ssize_t nread;
-	char *buf = NULL;
+	char *buf = NULL, *token, *path;
 	size_t count = 0;
-	int i, status, line_number = 1;
+	int status, line_number = 1, i, j;
 	pid_t child_pid;
-	char *token;
-	char **array;
+	char *array[10];
 
 	while (1)
 	{
@@ -37,33 +36,37 @@ int main(int argc, char *argv[], char **env)
 			continue;
 		}
 
-		token = strtok(buf, " \n");
-
-		array = malloc(sizeof(char *) * 1024);
+		
 		i = 0;
-		while (token)
+		while (buf[i] != '\n')
 		{
-			array[i] = token;
-			if (i == 0)
-				array[0] = getFilePath(array[0]);
-			token = strtok(NULL, " \n");
 			i++;
 		}
-		array[i] = NULL;
+		buf[i] = '\0';
+		
+		j = 0;
+		token = strtok(buf, " \n");
+		while (token)
+		{
+			array[j] = token;
+			token = strtok(NULL, ":");
+			j++;
+		}
+		array[j] = NULL;
 
-		for (i = 0; array[i] != NULL; i++)
-			printf("%s\n", array[i]);
+		path = find_loc(array[0]);
 
 		child_pid = fork();
 		if (child_pid == -1)
 		{
 			perror("Error: Failed to create");
+			free(buf);
 			exit(41);
 		}
 		if (child_pid == 0)
 		{
-			/* if (execve(array[0], array, NULL) == -1) */
-			if (execvp(array[0], array) == -1)
+			if (execve(path, array, NULL) == -1)
+			/* if (execvp(array[0], array) == -1)*/
 			{
 				perror("Error: Failed");
 				exit(7);
@@ -74,7 +77,6 @@ int main(int argc, char *argv[], char **env)
 			wait(&status);
 		}
 		line_number++;
-		free(array);
 	}
 	free(buf);
 	return (0);
