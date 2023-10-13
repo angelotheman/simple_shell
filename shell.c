@@ -10,7 +10,6 @@
 
 int main(int argc, char *argv[], char **env)
 {
-	(void)argc, (void)argv;
 	ssize_t nread;
 	char *buf = NULL;
 	size_t count = 0;
@@ -18,6 +17,7 @@ int main(int argc, char *argv[], char **env)
 	pid_t child_pid;
 	char *token;
 	char **array;
+	(void)argc, (void)argv;
 
 	while (1)
 	{
