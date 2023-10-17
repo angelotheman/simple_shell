@@ -4,6 +4,7 @@
   * main - Wait program
   * @argc: Argumnt count
   * @argv: Array of arguments
+  * @env: Shows the environment
   *
   * Return: O Always succes
   */
@@ -28,9 +29,9 @@ int main(int argc, char *argv[], char **env)
 		if (nread == -1 || strcmp(buf, "exit\n") == 0)
 		{
 			free(buf);
-			exit (0);
+			exit(0);
 		}
-		
+
 		if (strcmp(buf, "env\n") == 0)
 		{
 			print_env(env);
