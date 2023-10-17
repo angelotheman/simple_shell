@@ -34,6 +34,9 @@ char *get_file_loc(char *path, char *file_name)
 
 	while (token)
 	{
+		if (path_buffer)
+			path_buffer = NULL;
+
 		path_buffer = malloc(strlen(token) + strlen(file_name) + 2);
 		if (!path_buffer)
 		{

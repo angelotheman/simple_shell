@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <fcntl.h>
 
-/* Helper Functions */
+/* Execute Functions */
 int startsWithFowardSlash(char const *str);
 char *get_file_path(char *file_name);
 char *get_file_loc(char *path, char *file_name);
