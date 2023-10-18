@@ -44,15 +44,14 @@ char *read_input(void)
   * @env: Environment variables
   */
 
-void execute_command(char *input, char **env)
+void execute_command(char *input, char *argv[], char **env)
 {
 	char *args[10];
-	char *path;
+	char *path, *shell_name;
 	int status, num_args;
 	pid_t child_pid;
 
-	(void)env;
-
+	shell_name = argv[0];
 	num_args = tokenize_input(input, args);
 
 	if (num_args == 0)
@@ -76,8 +75,11 @@ void execute_command(char *input, char **env)
 	{
 		if (execve(path, args, NULL) == -1)
 		{
-			perror("Error: Failed");
-			exit(1);
+			write(2, shell_name, strlen(shell_name));
+			write(2, ": 1: ", 5);
+			write(2, args[0], strlen(args[0]));
+			write(2, ": not found\n", 12);
+			exit(27);
 		}
 	}
 	else
