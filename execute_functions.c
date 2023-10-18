@@ -26,11 +26,13 @@ char *read_input(void)
 	buf_size = 0;
 	nread = getline(&input_buffer, &buf_size, stdin);
 
-	if (nread == -1 || strcmp(input_buffer, "exit\n") == 0)
+	if (nread == -1)
 	{
 		free(input_buffer);
 		exit(0);
 	}
+
+	input_buffer = handle_comment(input_buffer);
 
 	return (input_buffer);
 }

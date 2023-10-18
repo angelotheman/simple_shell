@@ -27,4 +27,6 @@ void print_env(char **env);
 void handle_cd(char **args, int num_args);
 void handle_exit(char *input);
 
+/* Handle various symbols */
+char *handle_comment(char *input);
 #endif /* SHELL_H */
