@@ -1,2 +1,2 @@
-simple_shell_project
-allowed_functions
+TEST_SUITE/*
+runchecker.bash
