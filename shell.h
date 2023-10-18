@@ -20,7 +20,9 @@ void print_prompt(void);
 int tokenize_input(char *input, char *args[]);
 
 /* Built in Functions */
-int handle_builtin_commands(char **args, int num_args, char *input, char **env);
+int handle_builtin_commands(char **args,
+		int num_args, char *input,
+		char **env);
 void print_env(char **env);
 void handle_cd(char **args, int num_args);
 void handle_exit(char *input);

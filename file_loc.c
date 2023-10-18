@@ -29,6 +29,7 @@ char *get_file_loc(char *path, char *file_name)
 	struct stat file_path;
 	char *path_buffer;
 
+	path_buffer = NULL;
 	path_copy = strdup(path);
 	token = strtok(path_copy, ":");
 
@@ -38,6 +39,7 @@ char *get_file_loc(char *path, char *file_name)
 			path_buffer = NULL;
 
 		path_buffer = malloc(strlen(token) + strlen(file_name) + 2);
+
 		if (!path_buffer)
 		{
 			perror("Error: malloc failed");
