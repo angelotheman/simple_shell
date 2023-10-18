@@ -14,7 +14,7 @@
 int startsWithFowardSlash(char const *str);
 char *get_file_path(char *file_name);
 char *get_file_loc(char *path, char *file_name);
-void execute_command(char *input, char **env);
+void execute_command(char *input, char *argv[], char **env);
 char *read_input(void);
 void print_prompt(void);
 int tokenize_input(char *input, char *args[]);
