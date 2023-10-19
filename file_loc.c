@@ -45,7 +45,7 @@ char *get_file_loc(char *path, char *file_name)
 			perror("Error: malloc failed");
 			exit(EXIT_FAILURE);
 		}
-		strcat(path_buffer, token);
+		strcpy(path_buffer, token);
 		strcat(path_buffer, "/");
 		strcat(path_buffer, file_name);
 		strcat(path_buffer, "\0");
