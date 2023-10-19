@@ -41,6 +41,7 @@ char *read_input(void)
 /**
   * execute_command - Executes the input from the buffer
   * @input: The argument from the buffer
+  * @argv: Array of argument
   * @env: Environment variables
   */
 
