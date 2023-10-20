@@ -24,7 +24,7 @@ char *read_input(void)
 
 	input_buffer = NULL;
 	buf_size = 0;
-	nread = my_getline(&input_buffer, &buf_size, stdin);
+	nread = getline(&input_buffer, &buf_size, stdin);
 
 	if (nread == -1)
 	{
