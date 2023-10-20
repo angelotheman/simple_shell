@@ -57,10 +57,8 @@ void execute_command(char *input, char *argv[], char **env)
 
 	if (num_args == 0)
 		return;
-
 	if (handle_builtin_commands(args, num_args, input, env) == 1)
 		return;
-
 	path = get_file_path(args[0]);
 
 	child_pid = fork();
@@ -80,13 +78,13 @@ void execute_command(char *input, char *argv[], char **env)
 			write(2, ": 1: ", 5);
 			write(2, args[0], strlen(args[0]));
 			write(2, ": not found\n", 12);
-			exit(27);
+			exit(127);
 		}
 	}
 	else
-	{
 		wait(&status);
-	}
+
+	free(path);
 }
 
 /**

@@ -78,7 +78,7 @@ char *get_file_path(char *file_name)
 
 	if (startsWithForwardSlash(file_name) &&
 			access(file_name, X_OK) == 0)
-		return (file_name);
+		return (strdup(file_name));
 
 	if (!path)
 	{

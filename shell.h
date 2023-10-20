@@ -11,7 +11,7 @@
 #include <fcntl.h>
 
 /* Execute Functions */
-int startsWithFowardSlash(char const *str);
+int startsWithForwardSlash(char const *str);
 char *get_file_path(char *file_name);
 char *get_file_loc(char *path, char *file_name);
 void execute_command(char *input, char *argv[], char **env);
