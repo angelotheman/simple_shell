@@ -130,8 +130,7 @@ int handle_builtin_commands(char **args, int num_args, char *input, char **env)
 {
 	if (strcmp(args[0], "exit") == 0)
 	{
-		handle_exit(input);
-		return (1);
+		return (shell_exit(args, input));
 	}
 	else if (strcmp(args[0], "cd") == 0)
 	{
